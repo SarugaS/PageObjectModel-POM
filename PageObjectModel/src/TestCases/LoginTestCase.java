@@ -1,11 +1,10 @@
 package TestCases;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.PageFactory;
 
 import PageObjects.LoginPageObjects;
 
@@ -23,11 +22,10 @@ public class LoginTestCase {
 		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 		Thread.sleep(3000);
 		
-		LoginPageObjects.username(driver).sendKeys("Admin");
+		PageFactory.initElements(driver, LoginPageObjects.class);    //page factory class to identify webelements mentioned in loginpageobjects class
 		
-		
-		LoginPageObjects.password(driver).sendKeys("admin123"+Keys.ENTER);
-		
+		LoginPageObjects.username.sendKeys("Admin");
+		LoginPageObjects.password.sendKeys("admin123"+Keys.ENTER);
 		
 		driver.quit();
 

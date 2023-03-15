@@ -4,6 +4,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.PageFactory;
 
 import PageObjects.LoginPageObjects;
 import PageObjects.UpdateProfileObjects;
@@ -21,17 +22,21 @@ public class UpdateProfile {
 
 		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 		Thread.sleep(3000);
+		
+		PageFactory.initElements(driver, LoginPageObjects.class);
 
-		LoginPageObjects.username(driver).sendKeys("Admin");
-		LoginPageObjects.password(driver).sendKeys("admin123"+Keys.ENTER);
+		LoginPageObjects.username.sendKeys("Admin");
+		LoginPageObjects.password.sendKeys("admin123"+Keys.ENTER);
 		Thread.sleep(3000);
 		
-		UpdateProfileObjects.myinfo(driver).click();
+		PageFactory.initElements(driver, UpdateProfileObjects.class);
+		
+		UpdateProfileObjects.myinfo.click();
 		Thread.sleep(3000);
 
-		UpdateProfileObjects.Firstname(driver).sendKeys("John");
-		UpdateProfileObjects.employeeId(driver).sendKeys("1234");
-		UpdateProfileObjects.save(driver).click();
+		UpdateProfileObjects.Firstname.sendKeys("John");
+		UpdateProfileObjects.employeeId.sendKeys("1234");
+		UpdateProfileObjects.save.click();
 		Thread.sleep(3000);
 		
 		driver.quit();
