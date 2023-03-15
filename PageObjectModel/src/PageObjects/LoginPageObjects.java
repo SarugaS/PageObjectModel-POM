@@ -9,6 +9,7 @@ public class LoginPageObjects {
 
 	@FindBy(name="username")
 	public static WebElement username;
+	
 	@FindBy(name= "password")
 	public static WebElement password;
 
